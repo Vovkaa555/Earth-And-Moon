@@ -4,11 +4,11 @@ import Earth from './components/Earth';
 import { OrbitControls } from '@react-three/drei'
 import { Switch } from 'antd';
 
-
 import './App.scss';
 import Moon from "./components/Moon";
 import EarthText from "./components/EarthText";
 import MoonText from "./components/MoonText";
+import Loading from "./components/Loading";
 
 const App:React.FC = () => {
   const [earthSwitch, setEarthSwitch] = useState<boolean>(true)
@@ -34,7 +34,7 @@ const App:React.FC = () => {
         </div>
       )}
       <div className="canvas">
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loading/>}>
           <Canvas> 
             {earthSwitch ? <Earth /> : <Moon/>}                  
             <OrbitControls/>
